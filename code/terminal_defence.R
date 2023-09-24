@@ -68,8 +68,8 @@ terminal_perf_chart <- ggplot(
         linewidth = 1.0
 ) +
     labs(
-        x = "RVs per Aimpoint",
-        y = "Attack Size (RVs)",
+        x = "Attack Size (RVs)",
+        y = "",
         title = "Performance of a Hypothetical Terminal BMD System",
         subtitle = "Intercept Probability = 0.8, ICBM Reliability = 0.9",
         color = "Legend"
@@ -100,3 +100,17 @@ terminal_silos_chart <- ggplot(
     plot_theme
 
 print(terminal_silos_chart)
+
+ggsave(
+    "terminal_perf.png",
+    terminal_perf_chart,
+    device = "png",
+    path = "~/documents/coding/R/missile-defence/assets"
+)
+
+ggsave(
+    "terminal_silos.png",
+    terminal_silos_chart,
+    device = "png",
+    path = "~/documents/coding/R/missile-defence/assets"
+)
