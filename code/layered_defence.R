@@ -63,7 +63,7 @@ layered_defence <- function(p_over, p_under, p_k, silos, attack_size) { # nolint
     )
 }
 
-layered_perf <- layered_defence(0.8, 0.7, 0.9, 400, 1000)
+layered_perf <- layered_defence(0.8, 0.7, 0.9, 400, 2000)
 
 colors_2 <- c(
     "Intercepts (Overlay)" = "#0F5499",
@@ -120,3 +120,17 @@ layered_silos_chart <- ggplot(
     plot_theme
 
 print(layered_silos_chart)
+
+ggsave(
+    "layered_perf.png",
+    layered_perf_chart,
+    device = "png",
+    path = "~/documents/coding/R/missile-defence/assets"
+)
+
+ggsave(
+    "layered_silos.png",
+    layered_silos_chart,
+    device = "png",
+    path = "~/documents/coding/R/missile-defence/assets"
+)
