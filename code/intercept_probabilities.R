@@ -73,13 +73,13 @@ terminal_surv_chart <- ggplot(
 
 print(terminal_surv_chart)
 
-overlay_survival <- function(p_under, p_over = 0.8, p_k = 0.9, silos = 400, attack_size) { # nolint
+layered_survival <- function(p_under, p_over = 0.8, p_k = 0.9, silos = 400, attack_size) { # nolint
     p_under <- rnorm(1, p_under, sd = 0.01)
     destroyed <- attack_size * (1 - p_over) * (1 - p_under) * p_k
     return(destroyed)
 }
 
-overlay_surv <- tibble(
+layered_surv <- tibble(
     efficiency = seq(0, 1, length.out = 1000),
     silos_1 = sapply(
         efficiency, overlay_survival, attack_size = 500),
@@ -91,7 +91,7 @@ overlay_surv <- tibble(
         silos_2 = ifelse(silos_2 > 400, 400, silos_2) / 400 * 100
 )
 
-overlay_surv_chart <- ggplot(
+layered_surv_chart <- ggplot(
     data = overlay_surv,
     aes(x = efficiency)
 ) +
@@ -116,7 +116,7 @@ overlay_surv_chart <- ggplot(
     theme_fivethirtyeight() +
     plot_theme
 
-print(overlay_surv_chart)
+print(layered_surv_chart)
 
 ggsave(
     "terminal_survival.png",
@@ -126,8 +126,8 @@ ggsave(
 )
 
 ggsave(
-    "overlay_survival.png",
-    overlay_surv_chart,
+    "layered_survival.png",
+    layered_surv_chart,
     device = "png",
     path = "~/documents/coding/R/missile-defence/assets"
 )
