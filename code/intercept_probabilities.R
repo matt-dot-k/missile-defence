@@ -117,3 +117,17 @@ overlay_surv_chart <- ggplot(
     plot_theme
 
 print(overlay_surv_chart)
+
+ggsave(
+    "terminal_survival.png",
+    terminal_surv_chart,
+    device = "png",
+    path = "~/documents/coding/R/missile-defence/assets"
+)
+
+ggsave(
+    "overlay_survival.png",
+    overlay_surv_chart,
+    device = "png",
+    path = "~/documents/coding/R/missile-defence/assets"
+)
