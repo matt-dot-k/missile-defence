@@ -1,4 +1,4 @@
-# Missile Defence
+# Illustrated Missile Defence
 
 This repository contains a set of simulations and relevant visualisations which illustrate some of the basic
 concepts and assumptions underlying ballistic missile defence (BMD). The goal is not to provide mathematically
